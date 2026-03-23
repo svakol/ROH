@@ -65,7 +65,6 @@ with open(input_file) as f:
         if not pop_dict:
             lod_scores.append(float(line.split()[0]))
         elif line.split()[-1] in pop_dict[pop]:
-
             lod_scores.append(float(line.split()[0]))
             
 # Do gaussian kernel density estimation as per paper 1. 
@@ -122,7 +121,7 @@ sig_lod = []
 with open(input_file) as f:
     for line in f:
         if line[0] != "#":
-            if float(line.split()[0]) >= threshold.fun:
+            if (float(line.split()[0]) >= threshold.fun) and (line.split()[4] in pop_dict[pop]):
                 # Start, Stop, Chromosome, Individual
                 sig_lod.append([int(line.split()[1]), int(line.split()[2]), line.split()[3], line.split()[4]])
 

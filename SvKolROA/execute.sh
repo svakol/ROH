@@ -131,6 +131,8 @@ done
 if [[ ${all_processed} == "True" ]]; then
     echo -e "#Start\tStop\tChrom\tInd\tLength\n" > ${o}.lod.sig
     for pop in "${populations[@]}"; do
+        tail ${o}.${pop}.lod.sig
+        echo ${o}.${pop}.lod.sig 
         grep -v "#" ${o}.${pop}.lod.sig >> ${o}.lod.sig
     done
 fi
